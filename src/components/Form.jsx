@@ -14,6 +14,7 @@ export const Form = () => {
 
     const [data, setData] = useState(null);
     const [loading, setloading] = useState(false);
+    const [isRed, setisRed] = useState(false);
 
     useEffect(() => {
         let data = localStorage.getItem('data');
@@ -49,6 +50,7 @@ export const Form = () => {
                 || (input_month === parseInt(end_month) && input_day < parseInt(end_day))
             ) {
                 console.log('success');
+                setisRed(true)
             } else {
                 return;
             }
@@ -63,6 +65,7 @@ export const Form = () => {
             return;
         } else {
             console.log('success');
+            setisRed(true)
         }
     }
     const formik = useFormik({
@@ -176,9 +179,8 @@ export const Form = () => {
                 </div>
             </div>
             {
-                data && (<div className="container">
+                data && (<div className={`container ${isRed ? 'green' : ''}`}>
                     <div className="horoscope-data">
-
                         <div className="horoscope-item">
                             <div style={{ marginRight: '10px' }}>Name:</div>
                             <div>{data.name}</div>

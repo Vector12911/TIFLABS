@@ -1,4 +1,7 @@
 /* FormDemo.css */
+.green {
+  background-color: green;
+}
 .horoscope-data {
   width: 450px;
   margin-top: 30px;
